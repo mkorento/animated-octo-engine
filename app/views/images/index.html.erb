@@ -10,16 +10,12 @@
   </thead>
 
   <tbody>
-    <% @images.each do |image| %>
+    <% @images.each do |i| %>
       <tr>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to(image_tag(i.file_url, size: '75'), i) %><td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Image', new_image_path %>
