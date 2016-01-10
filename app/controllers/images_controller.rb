@@ -1,17 +1,14 @@
-require 'colorize'
-
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   # GET /images
-  # GET /images.json
   def index
     @images = Image.all
   end
 
   # GET /images/1
-  # GET /images/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /images/new
@@ -24,9 +21,7 @@ class ImagesController < ApplicationController
   end
 
   # POST /images
-  # POST /images.json
   def create
-
     if !image_params[:file].nil?
       file_type = ".#{image_params[:file].content_type.split('/')[1]}"
       file_name = "#{SecureRandom.urlsafe_base64}#{file_type}"
@@ -52,27 +47,18 @@ class ImagesController < ApplicationController
   end
 
   # PATCH/PUT /images/1
-  # PATCH/PUT /images/1.json
   def update
-    respond_to do |format|
-      if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
-        format.json { render :show, status: :ok, location: @image }
-      else
-        format.html { render :edit }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+    if @image.update(image_params)
+      redirect_to @image, notice: 'Image was successfully updated.'
+    else
+      render :edit 
     end
   end
 
   # DELETE /images/1
-  # DELETE /images/1.json
   def destroy
     @image.destroy
-    respond_to do |format|
-      format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to images_url, notice: 'Image was successfully destroyed.'
   end
 
   private

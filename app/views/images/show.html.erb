@@ -1,4 +1,21 @@
+<%= link_to 'Home', images_path %><br><br>
 <h1><%= @image.name %></h1><br>
 <%= link_to(image_tag(@image.file_url(:large)), @image.file_url) %><br>
 <%= @image.description %><br>
-<%= link_to 'Home', images_path %><br>
+
+<h2>Comments:</h2>
+<% @image.comments.each do |c| %>
+    <%= c.nickname %>: <%= c.content %><br>
+<% end %>
+<br><br>
+
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :image_id, value: @image.id %>
+
+  nick: <%= f.text_field :nickname %> <%= f.text_field :content %><br>
+  <br>
+
+  <div class="actions">
+      <%= f.submit %>
+  </div>
+<% end %>
