@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'images#index'
-  resources :images
+  resources :images, path: :gallery
   post 'comments', to: 'comments#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
