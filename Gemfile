@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 gem "mini_magick"
 gem "carrierwave"
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
