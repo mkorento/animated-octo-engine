@@ -8,6 +8,12 @@ class ImagesController < ApplicationController
 
   # GET /images/1
   def show
+    next_image = Image.where("id > ?", @image.id).order(id: :asc).first
+    @next_image_id = next_image.id unless next_image.nil?
+
+    previous_image = Image.where("id < ?", @image.id).order(id: :desc).first
+    @previous_image_id = previous_image.id unless previous_image.nil?
+
     @comment = Comment.new
   end
 

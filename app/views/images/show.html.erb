@@ -1,4 +1,15 @@
 <%= link_to 'Home', images_path %><br><br>
+
+<% if @previous_image_id %>
+  <%= link_to 'Previous', image_path(@previous_image_id) %>
+<% end %>
+<br>
+
+<% if @next_image_id %>
+  <%= link_to 'Next', image_path(@next_image_id) %>
+<% end %>
+<br>
+
 <h1><%= @image.name %></h1><br>
 <%= link_to(image_tag(@image.file_url(:large)), @image.file_url) %><br>
 <%= @image.description %><br>
