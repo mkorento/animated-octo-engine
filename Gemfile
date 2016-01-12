@@ -39,10 +39,11 @@ gem 'spring',        group: :development
 
 gem "mini_magick"
 gem "carrierwave"
-gem "colorize"
+gem 'bootstrap-sass'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
+  gem "colorize"
   gem 'sqlite3'
 end
 
