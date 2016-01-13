@@ -1,32 +1,46 @@
-<%= link_to 'Home', images_path %><br><br>
+<div class="container">
 
-<% if @previous_image_id %>
-  <%= link_to 'Previous', image_path(@previous_image_id) %>
-<% end %>
-<br>
+    <ul class="pager">
+        <li>
+            <% if @previous_image_id %>
+                <a href="<%= image_path(@previous_image_id) %>">Previous</a>
+            <% else %>
+                <a href="#">Previous</a>
+            <% end %>
+        </li>
 
-<% if @next_image_id %>
-  <%= link_to 'Next', image_path(@next_image_id) %>
-<% end %>
-<br>
+        <li><a href="<%= images_path %>">Gallery</a></li>
 
-<h1><%= @image.name %></h1><br>
-<%= link_to(image_tag(@image.file_url(:large)), @image.file_url) %><br>
-<%= @image.description %><br>
+        <li>
+            <% if @next_image_id %>
+                <a href="<%= image_path(@next_image_id) %>">Next</a>
+            <% else %>
+                <a href="#">Next</a>
+            <% end %>
+        </li>
+    </ul>
 
-<h2>Comments:</h2>
-<% @image.comments.each do |c| %>
-    <%= c.nickname %>: <%= c.content %><br>
-<% end %>
-<br><br>
+    <div class="testi">
+        <h1><%= @image.name %></h1><br>
+        <%= link_to(image_tag(@image.file_url(:large)), @image.file_url) %><br>
+        <%= @image.description %><br>
 
-<%= form_for @comment do |f| %>
-  <%= f.hidden_field :image_id, value: @image.id %>
 
-  nick: <%= f.text_field :nickname %> <%= f.text_field :content %><br>
-  <br>
+        <h2>Comments:</h2>
+        <% @image.comments.each do |c| %>
+            <%= c.nickname %>: <%= c.content %><br>
+        <% end %>
+        <br><br>
 
-  <div class="actions">
-      <%= f.submit %>
-  </div>
-<% end %>
+        <%= form_for @comment do |f| %>
+            <%= f.hidden_field :image_id, value: @image.id %>
+
+            nick: <%= f.text_field :nickname %> <%= f.text_field :content %><br>
+            <br>
+
+            <div class="actions">
+                <%= f.submit %>
+            </div>
+        <% end %>
+    </div>
+</div>
