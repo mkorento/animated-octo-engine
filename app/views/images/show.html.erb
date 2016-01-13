@@ -1,48 +1,92 @@
 <div class="container">
 
     <!--Pager-->
-    <ul class="pager">
-        <li>
-            <% if @previous_image_id %>
-                <a href="<%= image_path(@previous_image_id) %>">Previous</a>
-            <% else %>
-                <a href="#">Previous</a>
-            <% end %>
-        </li>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="pager">
+                <% if @previous_image_id %>
+                    <li>
+                    <a href="<%= image_path(@previous_image_id) %>">Previous</a>
+                <% else %>
+                    <li class="disabled">
+                    <a href="#">Previous</a>
+                <% end %>
 
-        <li><a href="<%= images_path %>">Gallery</a></li>
+                    </li>
 
-        <li>
-            <% if @next_image_id %>
-                <a href="<%= image_path(@next_image_id) %>">Next</a>
-            <% else %>
-                <a href="#">Next</a>
-            <% end %>
-        </li>
-    </ul>
+                <li><a href="<%= images_path %>">Gallery</a></li>
+
+                <% if @next_image_id %>
+                    <li>
+                    <a href="<%= image_path(@next_image_id) %>">Next</a>
+                <% else %>
+                    <li class="disabled">
+                    <a href="#">Next</a>
+                <% end %>
+                    </li>
+            </ul>
+        </div>
+    </div>
 
     <!--Image-->
-    <div class="testi">
-        <h1><%= @image.name %></h1><br>
-        <%= link_to(image_tag(@image.file_url(:large), class: 'image-responsive'), @image.file_url) %><br>
-        <%= @image.description %><br>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-wrap"><%= @image.name %></h1>
+        </div>
 
+        <div class="col-xs-12">
+            <%= link_to(image_tag(@image.file_url(:large)), @image.file_url) %>
+        </div>
 
-        <!--Comments-->
-        <h2>Comments:</h2>
-        <% @image.comments.each do |c| %>
-            <%= c.nickname %>: <%= c.content %><br>
+        <div class="col-xs-12">
+            <span class="text-wrap">
+                <%= @image.description %>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-xs-12" style="height:20px;"></div>
+
+    <!--Comments-->
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Comments:</h3>
+        </div>
+
+        <% if @image.comments.any? %>
+            <% @image.comments.each do |c| %>
+                <div class="col-xs-12">
+                    <p class="text-wrap"><strong><%= c.nickname %></strong>: <%= c.content %></p>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="col-xs-12">
+                Be the first to leave a comment!
+            </div>
         <% end %>
-        <br><br>
+
+        <div class="col-xs-12" style="height:50px;"></div>
 
         <%= form_for @comment do |f| %>
-            <%= f.hidden_field :image_id, value: @image.id %>
+            <div class="col-xs-12">
+                <%= f.hidden_field :image_id, value: @image.id %>
+                <%= f.text_area :content, size: '75' %>
+            </div>
 
-            <%= f.text_area :content, class: 'form-control', size: '75' %><br>
-            Nickname: <%= f.text_field :nickname %><br><br>
+            <div class="col-xs-12">
+                <%= f.label :nickname, 'Nickname ' %>
+            </div>
 
-            <div class="actions">
-                <%= f.submit 'Submit' %>
+            <div class="col-xs-12">
+                <%= f.text_field :nickname %>
+            </div>
+
+            <div class="col-xs-12" style="height:20px;"></div>
+
+            <div class="col-xs-12">
+                <div class="actions">
+                    <%= f.submit 'Submit' %>
+                </div>
             </div>
         <% end %>
     </div>
