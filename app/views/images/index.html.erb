@@ -2,20 +2,14 @@
 
 <%= link_to 'Upload image', new_image_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @images.each do |i| %>
-      <tr>
-        <td><%= link_to(image_tag(i.file_url, size: '75'), i) %><td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="container">
+    <div class="row">
+        <% @images.each do |i| %>
+        <div class="col-xs-6 col-md-3">
+          <a href=<%= image_path i.id %> class="thumbnail">
+              <img src=<%= i.file_url %> alt="" />
+          </a>
+        </div>
+            <% end %>
+    </div>
+</div>
