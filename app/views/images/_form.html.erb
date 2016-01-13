@@ -2,20 +2,22 @@
     <%= form_for @image, {:multipart => true} do |f| %>
         <div class="row">
             <% if @image.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+                <div class="col-xs-12">
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
 
-                    <ul>
-                        <% @image.errors.full_messages.each do |message| %>
-                            <li><%= message %></li>
-                        <% end %>
-                    </ul>
+                        <ul>
+                            <% @image.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
                 </div>
             <% end %>
         </div>
 
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-9 col-xs-offset-3">
                 <%= f.file_field :file %>
             </div>
         </div>
@@ -25,8 +27,10 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12">
-                <%= f.label :name, 'Title ' %><br>
+            <div class="col-xs-9 col-xs-offset-3">
+                <%= f.label :name, 'Title ' %>
+            </div>
+            <div class="col-xs-9 col-xs-offset-3">
                 <%= f.text_field :name, size: '25' %>
             </div>
         </div>
@@ -36,8 +40,10 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12">
-                <%= f.label 'Description' %><br>
+            <div class="col-xs-9 col-xs-offset-3">
+                <%= f.label 'Description' %>
+            </div>
+            <div class="col-xs-9 col-xs-offset-3">
                 <%= f.text_area :description, size: '50x2' %>
             </div>
         </div>
@@ -46,8 +52,12 @@
             <div class="col-xs-12" style="height:20px;"></div>
         </div>
 
-        <div class="actions">
-            <%= f.submit 'Upload' %>
+        <div class="row">
+            <div class="actions">
+                <div class="col-xs-9 col-xs-offset-3">
+                    <%= f.submit 'Upload' %>
+                </div>
+            </div>
         </div>
     <% end %>
 </div>
