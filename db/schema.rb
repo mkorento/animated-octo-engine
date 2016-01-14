@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20160110225053) do
 
   create_table "comments", force: true do |t|
-    t.string   "nickname",   null: false
-    t.string   "content",    null: false
+    t.text     "nickname",   null: false
+    t.text     "content",    null: false
     t.integer  "image_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
