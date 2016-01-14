@@ -46,6 +46,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem "colorize"
   gem 'sqlite3'
+  gem 'byebug'
 end
 
 group :production do

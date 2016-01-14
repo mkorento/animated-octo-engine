@@ -68,9 +68,23 @@
         <div class="col-xs-12" style="height:50px;"></div>
 
         <%= form_for @comment do |f| %>
+            <% if flash[:error] %>
+                <div class="col-xs-12">
+                    <div id="error_explanation">
+                        <h2>Your comment could not be saved:</h2>
+
+                        <ul>
+                            <% flash[:error].each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+            <% end %>
+
             <div class="col-xs-12">
                 <%= f.hidden_field :image_id, value: @image.id %>
-                <%= f.text_area :content, size: '75' %>
+                <%= f.text_area :content, size: '75', maxlength: '140', onkeyup: 'textAreaMaxLength(this);' %>
             </div>
 
             <div class="col-xs-12">
@@ -78,7 +92,7 @@
             </div>
 
             <div class="col-xs-12">
-                <%= f.text_field :nickname %>
+                <%= f.text_field :nickname, maxlength: 15 %>
             </div>
 
             <div class="col-xs-12" style="height:20px;"></div>

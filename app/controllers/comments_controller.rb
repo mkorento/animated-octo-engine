@@ -6,7 +6,13 @@ class CommentsController < ApplicationController
      if @comment.save
        redirect_to :back
      else
-       render 'images#show'
+       errors = []
+       @comment.errors.full_messages.each do |message|
+          errors.append message
+       end
+       flash[:error] = errors
+
+       redirect_to image_path comment_params[:image_id]
      end
   end
 
