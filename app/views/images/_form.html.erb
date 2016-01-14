@@ -31,7 +31,7 @@
                 <%= f.label :name, 'Title ' %>
             </div>
             <div class="col-xs-9 col-xs-offset-3">
-                <%= f.text_field :name, size: '25' %>
+                <%= f.text_field :name, size: '50', maxlength: 108 %>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
                 <%= f.label 'Description' %>
             </div>
             <div class="col-xs-9 col-xs-offset-3">
-                <%= f.text_area :description, size: '50x2' %>
+                <%= f.text_area :description, size: '50x10', maxlength: '500', onkeyup: 'textAreaMaxLength(this);' %>
             </div>
         </div>
 

@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160110225053) do
   add_index "comments", ["image_id"], name: "index_comments_on_image_id"
 
   create_table "images", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "description"
+    t.text     "name",        null: false
+    t.text     "description"
     t.string   "file",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
