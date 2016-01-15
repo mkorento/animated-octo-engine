@@ -26,3 +26,43 @@ img.centered {
    min-width:100%;
    min-height:100px;
 }
+
+ul#navbar {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    text-decoration: none;
+}
+
+li#navbar {
+    float: left;
+    text-decoration: none;
+}
+
+li#navbar a {
+    font-size: 105%;
+    display: block;
+    color: #777;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-decoration: none;
+}
+
+li#navbar a.brand {
+    font-size: 150%;
+}
+
+li#navbar a:hover {
+    color: #333;
+}
+
+/* Change the link color to #111 (black) on hover */
+li#navbar a:hover {
+    background-color: #F8F8F8;
+    text-decoration: none;
+}
